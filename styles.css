@@ -1,0 +1,101 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap);
+
+:root {
+    --black: #130f0d;
+    --white: #f0f0f9;
+    --primary: #fd951f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*, button, input {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    height: 100vh;
+    margin: 18px;
+
+    background-color: var(--black);
+    color: var(--white);
+}
+
+header {
+    margin-top: 32px;
+    
+    text-align: center;
+    height: 100px;
+    color: var(--primary);
+}
+
+main {
+    margin: 0 auto;
+}
+
+.tab-links {
+    margin-bottom: 32px;
+    padding-inline: 10%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tab-content {
+    padding-inline: 15%;
+    text-align: justify;
+}
+
+* button {
+    color: var(--white);
+
+    border: none;
+    background: transparent;
+
+    text-transform: uppercase;
+    font-size: 12px;
+
+    padding: 15px 15px 8px 15px;
+
+    outline: none;
+
+    position: relative; /* Necessary for the children get the absolute position about this element */
+}
+
+button::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    content: "";
+    height: 1px;
+    width: 0%;
+    
+    background-color: var(--primary);
+    transition: .2s;
+}
+
+button:hover::after, button.active::after {
+    position: absolute; /* Absolute position about the last "position relative" father */
+    bottom: 0;
+    width: 100%;
+
+    transition: .4s;
+}
+
+.tab-content>section {
+    animation: up 1s;
+}
+
+@keyframes up {
+    from{
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
